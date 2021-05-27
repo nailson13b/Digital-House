@@ -16,22 +16,6 @@ fun main(){
     var relatorio = Relatorio()
 
 
-
-//    Nubank.inserir(joaocorrente)
-//
-//    Nubank.mostrarDados()
-//
-//    Nubank.remover(mariapoupanca)
-//
-
-//    relatorio.gerarRelatorio(Nubank)
-
 Nubank.menu()
-//    Nubank.inserir(333,500.00)
-//    Nubank.inserir(444,1000.00)
-//    Nubank.mostrarDados()
-//    println("--------------------------------")
-////    Nubank.remover(333)
-//    Nubank.procurarConta(333)
-//    Nubank.mostrarDados()
+
 }

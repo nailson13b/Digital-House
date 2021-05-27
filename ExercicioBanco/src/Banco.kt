@@ -62,11 +62,28 @@ class Banco(
         //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA
         fun procurarConta(conta: Int) {
             for (i in listaDeContas) {
-                while (i.numeroDaConta == conta) {
-                    println("Conta encontrada")
-                    break
-                }
-                break
+                    if(i.numeroDaConta == conta) {
+                        println("Conta encontrada")
+                        println("Selecione o servico: \n" +
+                                "1- Sacar \n" +
+                                "2- Depositar \n")
+                        var reader = Scanner(System.`in`)
+                        var answer = reader.nextInt()
+                        when {
+                            (answer == 1) -> {
+                                println("Bem vindo, qual o valor deseja sacar: \n")
+                                var answer2 = reader.nextDouble()
+                                i.sacar(answer2)
+                                println(i.saldo)
+                            }
+
+                        }
+
+
+                    }
+
+
+
             }
 
         }
