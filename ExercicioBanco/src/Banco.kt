@@ -60,7 +60,6 @@ class Banco(
 
     }
 
-    //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA
     fun procurarConta(conta: Int) {
         for (i in listaDeContas) {
             if (i.numeroDaConta == conta) {
@@ -69,8 +68,9 @@ class Banco(
                     "Selecione o servico: \n" +
                             "1- Sacar \n" +
                             "2- Depositar \n" +
-                            "3- Relatorio\n" +
-                            "4- Retornar ao Menu\n"
+                            "3- Transferir\n" +
+                            "4- Relatorio\n" +
+                            "5- Retornar ao Menu\n"
                 )
                 val reader = Scanner(System.`in`)
                 val answer = reader.nextInt()
@@ -87,20 +87,37 @@ class Banco(
 
                     }
                     (answer == 3) -> {
+                        println("Para qual conta deseja transferir?\n")
+                        val answer4 = reader.nextInt()
+                        for (t in listaDeContas){
+                            if (t.numeroDaConta == answer4){
+                                println("Qual o valor deseja transferir: \n")
+                                val answer5 = reader.nextDouble()
+                                i.transferir(answer5, t)
+                                return
+                            }
+                        }
+                        println("Conta inexistente.")
+                    }
+                    (answer == 4) -> {
                         val relatorio = Relatorio()
                         relatorio.gerarRelatorio(i)
-
+                    }
+                    (answer == 5) -> {
+                        menu()
+                    }
+                    else ->{
+                        println("Opcao invalida.")
                     }
 
                 }
 
-
+                return
             }
         }
-
+        println("Conta inexistente.")
     }
 
-    //TODO IMPLEMENTAR IMPRIMIVEL DO LIMITE E TAXA DA POUPANCA E CORRENTE
     override fun mostrarDados() {
         listaDeContas.forEach {
             println(
@@ -134,15 +151,13 @@ class Banco(
                     procurarConta(answer)
                     menu()
                 }
-                (answer == 3) -> {
-                    println("Aplicativo finalizado")
-                }
                 else -> {
                     println("Opcao invalida")
                     menu()
                 }
             }
         }
+        println("Aplicativo finalizado")
     }
 
 }
