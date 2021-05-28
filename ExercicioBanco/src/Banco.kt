@@ -1,4 +1,3 @@
-import java.lang.ref.Cleaner
 import java.util.*
 
 class Banco(
@@ -6,14 +5,14 @@ class Banco(
 ) : Imprimivel {
 
     fun inserir() {
-        var reader = Scanner(System.`in`)
+        val reader = Scanner(System.`in`)
         println(
             "Para criar uma conta digite :\n" +
                     "1- Conta Poupanca\n" +
                     "2- Conta Corrente\n" +
                     "3- Retornar"
         )
-        var answer1: Int = reader.nextInt()
+        val answer1: Int = reader.nextInt()
         when {
             (answer1 == 1) -> {
                 println("Digite o numero da sua conta:\n")
@@ -46,7 +45,6 @@ class Banco(
         }
     }
 
-    //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA PARA SER DELETADA
     fun remover(numero: Int) {
         for (i in listaDeContas) {
             if (i.numeroDaConta == numero) {
@@ -60,62 +58,73 @@ class Banco(
 
     }
 
-    fun procurarConta(conta: Int) {
-        for (i in listaDeContas) {
-            if (i.numeroDaConta == conta) {
-                println("Conta encontrada")
-                println(
-                    "Selecione o servico: \n" +
-                            "1- Sacar \n" +
-                            "2- Depositar \n" +
-                            "3- Transferir\n" +
-                            "4- Relatorio\n" +
-                            "5- Retornar ao Menu\n"
-                )
-                val reader = Scanner(System.`in`)
-                val answer = reader.nextInt()
-                when {
-                    (answer == 1) -> {
-                        println("Qual o valor deseja sacar: \n")
-                        val answer2 = reader.nextDouble()
-                        i.sacar(answer2)
-                    }
-                    (answer == 2) -> {
-                        println("Qual o valor deseja depositar: \n")
-                        val answer3 = reader.nextDouble()
-                        i.depositar(answer3)
-
-                    }
-                    (answer == 3) -> {
-                        println("Para qual conta deseja transferir?\n")
-                        val answer4 = reader.nextInt()
-                        for (t in listaDeContas){
-                            if (t.numeroDaConta == answer4){
-                                println("Qual o valor deseja transferir: \n")
-                                val answer5 = reader.nextDouble()
-                                i.transferir(answer5, t)
-                                return
-                            }
+    fun procurarConta(conta: Int?) {
+            for (i in listaDeContas) {
+                if (i.numeroDaConta == conta?: 0) {
+                    println("Conta encontrada")
+                    println(
+                        "Selecione o servico: \n" +
+                                "1- Sacar \n" +
+                                "2- Depositar \n" +
+                                "3- Transferir\n" +
+                                "4- Relatorio\n" +
+                                "5- Remover Conta\n" +
+                                "6- Retornar ao Menu\n"
+                    )
+                    val reader = Scanner(System.`in`)
+                    val answer = reader.nextInt()
+                    when {
+                        (answer == 1) -> {
+                            println("Qual o valor deseja sacar: \n")
+                            val answer2 = reader.nextDouble()
+                            i.sacar(answer2)
+                            menu()
                         }
-                        println("Conta inexistente.")
-                    }
-                    (answer == 4) -> {
-                        val relatorio = Relatorio()
-                        relatorio.gerarRelatorio(i)
-                    }
-                    (answer == 5) -> {
-                        menu()
-                    }
-                    else ->{
-                        println("Opcao invalida.")
+                        (answer == 2) -> {
+                            println("Qual o valor deseja depositar: \n")
+                            val answer3 = reader.nextDouble()
+                            i.depositar(answer3)
+                            menu()
+                        }
+                        (answer == 3) -> {
+                            println("Para qual conta deseja transferir?\n")
+                            val answer4 = reader.nextInt()
+                            for (t in listaDeContas) {
+                                if (t.numeroDaConta == answer4) {
+                                    println("Qual o valor deseja transferir: \n")
+                                    val answer5 = reader.nextDouble()
+                                    i.transferir(answer5, t)
+                                    menu()
+                                }
+
+                            }
+                            println("Conta $conta inexistente.")
+                        }
+                        (answer == 4) -> {
+                            val relatorio = Relatorio()
+                            relatorio.gerarRelatorio(i)
+                            menu()
+                        }
+                        (answer == 5) -> {
+                            remover(conta?: 0)
+                            menu()
+                        }
+                        (answer == 6) -> {
+                            menu()
+                            return
+                        }
+                        else -> {
+                            println("Opcao invalida.")
+                            menu()
+                        }
+
                     }
 
+                    return
                 }
-
-                return
             }
-        }
         println("Conta inexistente.")
+        menu()
     }
 
     override fun mostrarDados() {
@@ -136,9 +145,9 @@ class Banco(
                     "3- Finalizar\n"
         )
         var reader = Scanner(System.`in`)
-        var answer = reader.nextInt()
+        var answer:Int? = reader.nextInt()
 
-        while (answer != 3) {
+//        while (answer != 3) {
             when {
                 (answer == 1) -> {
                     inserir()
@@ -149,15 +158,18 @@ class Banco(
                     var reader = Scanner(System.`in`)
                     var answer = reader.nextInt()
                     procurarConta(answer)
-                    menu()
+                }
+                (answer == 3) -> {
+                    println("Aplicativo finalizado")
                 }
                 else -> {
                     println("Opcao invalida")
                     menu()
                 }
             }
-        }
-        println("Aplicativo finalizado")
+//        }
+
+
     }
 
 }

@@ -13,9 +13,9 @@ fun main(){
     var mariapoupanca = ContaPoupanca(222,900.00)
     var Bank = Banco(mutableListOf (joaocorrente,mariapoupanca))
 
-    var relatorio = Relatorio()
 
 
-Bank.menu()
+
+    Bank.menu()
 
 }

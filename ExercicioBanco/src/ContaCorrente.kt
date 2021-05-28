@@ -13,13 +13,13 @@ class ContaCorrente(
             println("Saldo insuficiente.")
         } else {
             saldo -= value + taxaDeOperacao
-            println("Saque de R$$value realizado com sucesso.")
+            println("Saque de R$$value realizado com sucesso e taxa de R$$taxaDeOperacao cobrada.")
         }
     }
 
     override fun depositar(value: Double) {
         this.saldo += value - taxaDeOperacao
-        println("Deposito de R$$value realizado com sucesso.")
+        println("Deposito de R$$value realizado com sucesso e taxa de R$$taxaDeOperacao cobrada.")
     }
 
     override fun mostrarDados() {

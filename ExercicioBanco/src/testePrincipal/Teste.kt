@@ -1,21 +1,23 @@
 package testePrincipal
 
+import Banco
 import ContaCorrente
 import ContaPoupanca
-import Relatorio
-import java.util.*
 
 fun main(){
     var joaocorrente = ContaCorrente(
         111,
         1000.00
     )
-//    var mariapoupanca = ContaPoupanca(
-//        222,
-//        900.00
-//    )
+    var mariapoupanca = ContaPoupanca(222,900.00)
+    var Bank = Banco(mutableListOf (joaocorrente,mariapoupanca))
 
-    var relatorio = Relatorio()
+
+
+
+    Bank.menu()
+
+}
 
 
 //    mariapoupanca.sacar(1000.00) //S: 0, L: 900
@@ -30,7 +32,7 @@ fun main(){
 //    relatorio.gerarRelatorio(mariapoupanca)
 //    relatorio.gerarRelatorio(joaocorrente)
 
-}
+
 
 //override fun sacar(value: Double) {
 //    if (value <= saldo) {
