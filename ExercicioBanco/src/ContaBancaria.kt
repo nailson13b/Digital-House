@@ -1,4 +1,4 @@
-abstract class ContaBancaria {
+abstract class ContaBancaria:Imprimivel {
 
     abstract val numeroDaConta: Int
     abstract var saldo: Double

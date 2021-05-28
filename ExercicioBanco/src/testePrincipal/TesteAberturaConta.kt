@@ -11,11 +11,11 @@ fun main(){
         1000.00
     )
     var mariapoupanca = ContaPoupanca(222,900.00)
-    var Nubank = Banco(mutableListOf (joaocorrente,mariapoupanca))
+    var Bank = Banco(mutableListOf (joaocorrente,mariapoupanca))
 
     var relatorio = Relatorio()
 
 
-Nubank.menu()
+Bank.menu()
 
 }

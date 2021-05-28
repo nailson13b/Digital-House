@@ -1,3 +1,4 @@
+import java.lang.ref.Cleaner
 import java.util.*
 
 class Banco(
@@ -45,89 +46,103 @@ class Banco(
         }
     }
 
-        //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA PARA SER DELETADA
-        fun remover(numero: Int) {
-            for (i in listaDeContas) {
-                if (i.numeroDaConta == numero) {
-                    listaDeContas.remove(i)
-                    println("Conta ${numero}, removida.")
-                    break
-                }
-
+    //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA PARA SER DELETADA
+    fun remover(numero: Int) {
+        for (i in listaDeContas) {
+            if (i.numeroDaConta == numero) {
+                listaDeContas.remove(i)
+                println("Conta ${numero}, removida.")
+                return
+                // break
             }
-
-
         }
+        println("Conta nao existe")
 
-        //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA
-        fun procurarConta(conta: Int) {
-            for (i in listaDeContas) {
-                    if(i.numeroDaConta == conta) {
-                        println("Conta encontrada")
-                        println("Selecione o servico: \n" +
-                                "1- Sacar \n" +
-                                "2- Depositar \n")
-                        var reader = Scanner(System.`in`)
-                        var answer = reader.nextInt()
-                        when {
-                            (answer == 1) -> {
-                                println("Bem vindo, qual o valor deseja sacar: \n")
-                                var answer2 = reader.nextDouble()
-                                i.sacar(answer2)
-                                println(i.saldo)
-                            }
+    }
 
-                        }
-
-
-                    }
-
-
-
-            }
-
-        }
-
-        //TODO IMPLEMENTAR IMPRIMIVEL DO LIMITE E TAXA DA POUPANCA E CORRENTE
-        override fun mostrarDados() {
-            listaDeContas.forEach {
+    //TODO IMPLEMENTAR RETORNO PARA CONTA NAO ENCONTRADA
+    fun procurarConta(conta: Int) {
+        for (i in listaDeContas) {
+            if (i.numeroDaConta == conta) {
+                println("Conta encontrada")
                 println(
-                    "Numero da conta: ${it.numeroDaConta}.\n" +
-                            "Saldo atual: R$${it.saldo}\n"
+                    "Selecione o servico: \n" +
+                            "1- Sacar \n" +
+                            "2- Depositar \n" +
+                            "3- Relatorio\n" +
+                            "4- Retornar ao Menu\n"
                 )
-            }
-        }
-
-        fun menu() {
-            println(
-                "----- BEM VINDO AO NUBANK -----\n" +
-                        "Digite o numero correspondente ao servico desejado: \n" +
-                        "1- Criar Conta\n" +
-                        "2- Procurar uma conta\n" +
-                        "3- Finalizar\n"
-            )
-            var reader = Scanner(System.`in`)
-            var answer = reader.nextInt()
-
-            while (answer != 3) {
+                val reader = Scanner(System.`in`)
+                val answer = reader.nextInt()
                 when {
                     (answer == 1) -> {
-                        inserir()
+                        println("Qual o valor deseja sacar: \n")
+                        val answer2 = reader.nextDouble()
+                        i.sacar(answer2)
                     }
                     (answer == 2) -> {
-                        println("Digite o numero da conta desejada: ")
-                        var reader = Scanner(System.`in`)
-                        var answer = reader.nextInt()
-                        procurarConta(answer)
+                        println("Qual o valor deseja depositar: \n")
+                        val answer3 = reader.nextDouble()
+                        i.depositar(answer3)
+
                     }
                     (answer == 3) -> {
-                        println("Aplicativo finalizado")
+                        val relatorio = Relatorio()
+                        relatorio.gerarRelatorio(i)
+
                     }
-                    else -> {
-                        println("Opcao invalida")
-                    }
+
+                }
+
+
+            }
+        }
+
+    }
+
+    //TODO IMPLEMENTAR IMPRIMIVEL DO LIMITE E TAXA DA POUPANCA E CORRENTE
+    override fun mostrarDados() {
+        listaDeContas.forEach {
+            println(
+                "Numero da conta: ${it.numeroDaConta}.\n" +
+                        "Saldo atual: R$${it.saldo}\n"
+            )
+        }
+    }
+
+    fun menu() {
+        println(
+            "----- BEM VINDO AO BANK -----\n" +
+                    "Digite o numero correspondente ao servico desejado: \n" +
+                    "1- Criar Conta\n" +
+                    "2- Procurar uma conta\n" +
+                    "3- Finalizar\n"
+        )
+        var reader = Scanner(System.`in`)
+        var answer = reader.nextInt()
+
+        while (answer != 3) {
+            when {
+                (answer == 1) -> {
+                    inserir()
+                    menu()
+                }
+                (answer == 2) -> {
+                    println("Digite o numero da conta desejada: ")
+                    var reader = Scanner(System.`in`)
+                    var answer = reader.nextInt()
+                    procurarConta(answer)
+                    menu()
+                }
+                (answer == 3) -> {
+                    println("Aplicativo finalizado")
+                }
+                else -> {
+                    println("Opcao invalida")
+                    menu()
                 }
             }
         }
+    }
 
 }
