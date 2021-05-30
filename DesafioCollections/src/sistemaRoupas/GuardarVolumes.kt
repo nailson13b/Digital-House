@@ -1,0 +1,4 @@
+package sistemaRoupas
+
+class GuardarVolumes {
+}
