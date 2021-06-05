@@ -1,4 +1,4 @@
-class Aluno(
+open class Aluno(
     override var nome: String,
     override var sobrenome: String,
     override var codigo: Int
@@ -14,4 +14,9 @@ class Aluno(
             }
         }
     }
+
+    override fun toString(): String = """
+        $nome $sobrenome com o código: $codigo
+    """.trimIndent()
+
 }

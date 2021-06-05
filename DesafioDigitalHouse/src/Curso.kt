@@ -1,5 +1,5 @@
 class Curso(
-    var nome: String,
+    var nome: String, /* Investigar: Essa variavel esta sendo apenas utilizada pelo ToString*/
     var codigo: Int,
     var qtMaxAlunos: Int,
     var listAlunosMatriculados: MutableList<Aluno>
@@ -15,4 +15,8 @@ class Curso(
             }
         }
     }
+
+    override fun toString(): String  = """
+        $nome do código $codigo
+    """.trimIndent()
 }
