@@ -1,6 +1,8 @@
 class Curso(
     var nome: String,
-    var codigo: Int
+    var codigo: Int,
+    var qtMaxAlunos: Int,
+    var listAlunosMatriculados: MutableList<Aluno>
 ) {
     override fun equals(other: Any?): Boolean {
         val outroCurso = other as? Curso
