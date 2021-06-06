@@ -1,9 +1,10 @@
 class Curso(
     var nome: String, /* Investigar: Essa variavel esta sendo apenas utilizada pelo ToString*/
     var codigo: Int,
-    var qtMaxAlunos: Int,
-    var listAlunosMatriculados: MutableList<Aluno>
+    var qtMaxAlunos: Int
 ) {
+    var listAlunosMatriculados = mutableListOf<Aluno>()
+
     override fun equals(other: Any?): Boolean {
         val outroCurso = other as? Curso
         return when(other) {

@@ -3,7 +3,7 @@ class ProfessorAdjunto(
     override var sobrenome: String,
     override var codigo: Int,
     override var tempoDeCasa: Int,
-    var horasDeMonitoria: Int
+    var quantidadeDeHoras: Int
 ) : Professor() {
 
     override fun equals(other: Any?): Boolean {
