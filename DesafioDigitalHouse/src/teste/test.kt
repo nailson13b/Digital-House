@@ -21,8 +21,16 @@ fun main(){
     var listaMatricula = mutableListOf<Matricula>()
     var digitalHouseManager = DigitalHouseManager(listaAlunos,listaProfessor, listaCurso, listaMatricula)
 
-    digitalHouseManager.registrarCurso("Android", 123456, 30)
+    digitalHouseManager.registrarCurso("Android", 123456, 3)
     digitalHouseManager.matricularAluno("Nailson", "Oliveira", 1313)
-    digitalHouseManager.matricularAlunoCurso(1313,123456)
+    digitalHouseManager.registrarCurso("Ruby", 166666, 2)
+    digitalHouseManager.matricularAluno("Joao", "Oliveira", 1111)
+    digitalHouseManager.matricularAluno("Maria", "Oliveira", 2222)
+    digitalHouseManager.matricularAlunoCurso(1313,166666)
+    digitalHouseManager.matricularAlunoCurso(1111,166666)
+    digitalHouseManager.matricularAlunoCurso(2222,166666)
+    digitalHouseManager.listaMatricula.forEach {
+        println(it)
+    }
 
 }

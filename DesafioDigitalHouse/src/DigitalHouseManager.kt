@@ -1,3 +1,4 @@
+
 class DigitalHouseManager(
     var listaAlunos: MutableList<Aluno>,
     var listaProfessor: MutableList<Professor>, /* Talvez seja necessario separar essa lista em Lista de Adjunto e Lista de Titular*/
@@ -52,15 +53,27 @@ class DigitalHouseManager(
     }
 
     fun matricularAlunoCurso(codigoAluno: Int, codigoCurso: Int) {
-       var aluno = listaAlunos.find {
+       var aluno: Aluno? = listaAlunos.find {
            codigoAluno == it.codigo
        }
-        var curso = listaCurso.find {
+        var curso: Curso? = listaCurso.find {
             codigoCurso == it.codigo
         }
-        var matricula = Matricula()
-        matricula.criarMatricular(aluno,curso)
-
+        if (curso != null) {
+            if (curso.listAlunosMatriculados.size < curso.qtMaxAlunos) {
+                if (aluno != null) {
+                    curso.listAlunosMatriculados.add(aluno)
+                    var matricula = Matricula(aluno, curso)
+                    listaMatricula.add(matricula)
+                    println("A matricula do aluno $aluno no curso $curso foi realizada com sucesso.")
+                } else {
+                    println("Esperado elemento Aluno")
+                }
+            } else {
+                println("Nao foi possivel matricular o aluno $aluno.\n" +
+                        "Capacidade maxima de ${curso.qtMaxAlunos} atingida no curso $curso.")
+            }
+        }
 
     }
 
