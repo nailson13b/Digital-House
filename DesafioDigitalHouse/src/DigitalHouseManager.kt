@@ -6,7 +6,11 @@ class DigitalHouseManager(
     var listaMatricula: MutableList<Matricula>
 
 ) {
-    fun registrarCurso(nome:String, codigoCurso: Int, quantidadeMaximaDeAlunos:Int) {
+    fun registrarCurso(
+        nome:String,
+        codigoCurso: Int,
+        quantidadeMaximaDeAlunos:Int
+    ) {
         var curso = Curso(nome, codigoCurso,quantidadeMaximaDeAlunos)
         listaCurso.add(curso)
         println("Curso ${curso.nome} registrado com sucesso.")
@@ -23,19 +27,39 @@ class DigitalHouseManager(
         println("Curso nao existe.")
     }
 
-    fun registrarProfessorAdjunto(nome: String, sobrenome: String, codigoProfessor: Int, tempoDeCasa: Int = 0, quantidadeDeHoras: Int){
-        var professorAdjunto = ProfessorAdjunto(nome, sobrenome, codigoProfessor, tempoDeCasa, quantidadeDeHoras)
+    fun registrarProfessorAdjunto(
+        nome: String,
+        sobrenome: String,
+        codigoProfessor: Int,
+        tempoDeCasa: Int = 0,
+        quantidadeDeHoras: Int
+    ){
+        var professorAdjunto = ProfessorAdjunto(
+            nome,
+            sobrenome,
+            codigoProfessor,
+            tempoDeCasa,
+            quantidadeDeHoras
+        )
         listaProfessor.add(professorAdjunto)
         println("Professor adjunto ${professorAdjunto.nome} registrado com sucesso.")
     }
 
-    fun registrarProfessorTitular(nome: String, sobrenome: String, codigoProfessor: Int, tempoDeCasa: Int = 0, especialidade: String){
+    fun registrarProfessorTitular(
+        nome: String,
+        sobrenome: String,
+        codigoProfessor: Int,
+        tempoDeCasa: Int = 0,
+        especialidade: String
+    ){
         var professorTitular = ProfessorTitular(nome, sobrenome, codigoProfessor, tempoDeCasa, especialidade)
         listaProfessor.add(professorTitular)
         println("Professor titular ${professorTitular.nome} registrado com sucesso.")
     }
 
-    fun excluirProfessor(codigoProfessor: Int){
+    fun excluirProfessor(
+        codigoProfessor: Int
+    ){
         for (i in listaProfessor) {
             if (i.codigo == codigoProfessor){
                 listaProfessor.remove(i)
@@ -52,7 +76,10 @@ class DigitalHouseManager(
         println("Aluno ${aluno.nome} registrado com sucesso.")
     }
 
-    fun matricularAlunoCurso(codigoAluno: Int, codigoCurso: Int) {
+    fun matricularAlunoCurso(
+        codigoAluno: Int,
+        codigoCurso: Int
+    ) {
        var aluno: Aluno? = listaAlunos.find {
            codigoAluno == it.codigo
        }
@@ -76,5 +103,25 @@ class DigitalHouseManager(
         }
 
     }
+
+    fun alocarProfessor(
+        codigoCurso: Int,
+        codigoProfessorTitular: Int,
+        codigoProfessorAdjunto: Int
+    ) {
+        var curso: Curso? = listaCurso.find {
+            codigoCurso == it.codigo
+        }
+
+        var professorTitular: Professor? = listaProfessor.find {
+            codigoProfessorTitular == it.codigo
+        }
+
+        var professorAdjunto: Professor? = listaProfessor.find {
+            codigoProfessorAdjunto == it.codigo
+        }
+
+    }
+
 
 }

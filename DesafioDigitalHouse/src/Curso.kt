@@ -1,7 +1,9 @@
 class Curso(
     var nome: String, /* Investigar: Essa variavel esta sendo apenas utilizada pelo ToString*/
     var codigo: Int,
-    var qtMaxAlunos: Int
+    var qtMaxAlunos: Int,
+
+
 ) {
     var listAlunosMatriculados = mutableListOf<Aluno>()
 
@@ -18,7 +20,7 @@ class Curso(
     }
 
     override fun toString(): String  = """
-        $nome do código $codigo
+        $nome do código $codigo 
     """.trimIndent()
 
     fun adicionarUmAluno(aluno: Aluno?) {
