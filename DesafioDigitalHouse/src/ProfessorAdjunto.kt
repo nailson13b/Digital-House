@@ -6,6 +6,10 @@ class ProfessorAdjunto(
     var quantidadeDeHoras: Int
 ) : Professor() {
 
+    override fun toString(): String  = """
+        Professor Adjunto: $nome $sobrenome - $codigo
+    """.trimIndent()
+
     override fun equals(other: Any?): Boolean {
         val outroProfessor = other as? ProfessorAdjunto //talvez precise deixar apenas a Professor ao inves de ProfessorAdjunto
         return when(other) {

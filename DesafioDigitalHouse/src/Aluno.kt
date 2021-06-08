@@ -3,6 +3,7 @@ open class Aluno(
     override var sobrenome: String,
     override var codigo: Int
 ) : Pessoa() {
+
     override fun equals(other: Any?): Boolean {
         val outroAluno = other as? Aluno
         return when (other) {
@@ -16,7 +17,7 @@ open class Aluno(
     }
 
     override fun toString(): String = """
-        $nome $sobrenome com o código: $codigo
+        $nome $sobrenome - RA: $codigo
     """.trimIndent()
 
 }

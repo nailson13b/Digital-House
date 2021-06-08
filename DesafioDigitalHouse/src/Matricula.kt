@@ -6,7 +6,6 @@ class Matricula(
     var dataM: Date = Date()
 
 ) {
-
     fun criarMatricular(alunoM: Aluno?, cursoM: Curso?){
 
         println("Aluno $alunoM matriculado no curso de $cursoM em $dataM")
@@ -14,7 +13,7 @@ class Matricula(
     }
 
     override fun toString(): String = """
-        $alunoM matriculado no curso $cursoM
+        $alunoM matriculado no curso $cursoM 
     """.trimIndent()
 
 

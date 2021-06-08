@@ -5,6 +5,11 @@ class ProfessorTitular(
     override var tempoDeCasa: Int,
     var especialidade: String
 ) : Professor() {
+
+    override fun toString(): String  = """
+        Professor Titular: $nome $sobrenome - $codigo
+    """.trimIndent()
+
     override fun equals(other: Any?): Boolean {
         val outroProfessor = other as? ProfessorTitular //talvez precise deixar apenas a Professor ao inves de ProfessorTitular
         return when(other) {

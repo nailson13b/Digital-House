@@ -21,19 +21,28 @@ fun main(){
     var listaMatricula = mutableListOf<Matricula>()
     var digitalHouseManager = DigitalHouseManager(listaAlunos,listaProfessor, listaCurso, listaMatricula)
 
-    digitalHouseManager.registrarCurso("Android", 123456, 2)
-    digitalHouseManager.matricularAluno("Nailson", "Oliveira", 1313)
-    digitalHouseManager.registrarCurso("Ruby", 166666, 2)
-    digitalHouseManager.matricularAluno("Joao", "Oliveira", 1111)
-    digitalHouseManager.matricularAluno("Maria", "Oliveira", 2222)
-    digitalHouseManager.registrarProfessorTitular("Harry", "Potter", 7777, 0, "Kotlin")
-    digitalHouseManager.registrarProfessorAdjunto("Hermione", "Granger",8888, 0, 3)
-    digitalHouseManager.matricularAlunoCurso(1313,123456)
-    digitalHouseManager.matricularAlunoCurso(1111,123456)
-    digitalHouseManager.matricularAlunoCurso(2222,123456)
-    digitalHouseManager.alocarProfessor(123456, 8888,7777)
-    digitalHouseManager.listaMatricula.forEach {
-        println(it)
-    }
+
+    digitalHouseManager.registrarProfessorTitular("Severus", "Snape", 1111, 0, "Kotlin")
+    digitalHouseManager.registrarProfessorAdjunto("Alastor", "Moody",2222, 0, 2)
+    digitalHouseManager.registrarProfessorTitular("Minerva", "McGonagall", 3333, 0, "Full Stack")
+    digitalHouseManager.registrarProfessorAdjunto("Remo", "Lupin",4444, 0, 3)
+
+    digitalHouseManager.registrarCurso("Full Stack", 20001, 3)
+    digitalHouseManager.registrarCurso("Android", 20002, 2)
+
+    digitalHouseManager.matricularAluno("Harry", "Potter", 9999)
+    digitalHouseManager.matricularAluno("Hermione", "Granger", 8888)
+    digitalHouseManager.matricularAluno("Rony", "Weasley", 7777)
+    digitalHouseManager.matricularAluno("Draco", "Malfoy", 6666)
+    digitalHouseManager.matricularAluno("Cedrico", "Diggory", 5555)
+
+    digitalHouseManager.matricularAlunoCurso(9999,20001)
+    digitalHouseManager.matricularAlunoCurso(8888,20001)
+    digitalHouseManager.matricularAlunoCurso(7777,20002)
+    digitalHouseManager.matricularAlunoCurso(6666,20002)
+    digitalHouseManager.matricularAlunoCurso(5555,20002)
+
+    digitalHouseManager.alocarProfessor(20001, 1111,4444)
+    digitalHouseManager.alocarProfessor(20002, 3333, 2222)
 
 }
