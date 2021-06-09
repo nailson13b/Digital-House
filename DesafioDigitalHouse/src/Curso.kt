@@ -31,7 +31,7 @@ class Curso(
                 println("Esperado elemento Aluno")
             }
         } else {
-            println("Não foi possivel adicionar $aluno pois a capacidade máxima de $qtMaxAlunos foi atingida no curso de $nome.")
+            println("Não foi possivel adicionar $aluno pois a capacidade máxima de $qtMaxAlunos alunos foi atingida no curso de $nome.")
         }
     }
 
