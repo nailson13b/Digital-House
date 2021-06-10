@@ -22,6 +22,7 @@ fun main(){
     var digitalHouseManager = DigitalHouseManager(listaAlunos,listaProfessor, listaCurso, listaMatricula)
 
 
+
     digitalHouseManager.registrarProfessorTitular("Severus", "Snape", 1111, 0, "Kotlin")
     digitalHouseManager.registrarProfessorAdjunto("Alastor", "Moody",2222, 0, 2)
     digitalHouseManager.registrarProfessorTitular("Minerva", "McGonagall", 3333, 0, "Full Stack")
@@ -44,5 +45,18 @@ fun main(){
 
     digitalHouseManager.alocarProfessor(20001, 1111,4444)
     digitalHouseManager.alocarProfessor(20002, 3333, 2222)
+
+    digitalHouseManager.excluirAluno(6666)
+    println("----------------------------------------------------------------------------------")
+
+    digitalHouseManager.listaCurso.forEach {
+        println(it)
+            it.listAlunosMatriculados.forEach { aluno ->
+                println(aluno)
+            }
+
+    }
+
+
 
 }

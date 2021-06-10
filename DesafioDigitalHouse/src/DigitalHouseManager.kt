@@ -3,9 +3,13 @@ class DigitalHouseManager(
     var listaProfessor: MutableList<Professor>, /* Talvez seja necessario separar essa lista em Lista de Adjunto e Lista de Titular*/
     var listaCurso: MutableList<Curso>,
     var listaMatricula: MutableList<Matricula>,
+    nome: String,
+    codigo: Int,
+    qtMaxAlunos: Int
+
+): Curso(nome, codigo, qtMaxAlunos) {
 
 
-    ) {
     fun registrarCurso(
         nome: String,
         codigoCurso: Int,
@@ -63,6 +67,10 @@ class DigitalHouseManager(
         for (i in listaProfessor) {
             if (i.codigo == codigoProfessor) {
                 listaProfessor.remove(i)
+                var curso: Curso? = listaCurso.find {
+                    it.listaProfessorAlocados.contains(i)
+                }
+                curso?.listaProfessorAlocados?.remove(i)
                 println("Professor $codigoProfessor, removido.")
                 return
             }
@@ -87,25 +95,18 @@ class DigitalHouseManager(
             codigoCurso == it.codigo
         }
 
-        curso?.adicionarUmAluno(aluno)
-        var matricula = Matricula(aluno, curso)
-        listaMatricula.add(matricula)
 
-//        if (curso != null) {
-//            if (curso.listAlunosMatriculados.size < curso.qtMaxAlunos) {
-//                if (aluno != null) {
-//                    curso.listAlunosMatriculados.add(aluno)
-//                    var matricula = Matricula(aluno, curso)
-//                    listaMatricula.add(matricula)
-//                    println("A matricula do aluno $aluno no curso $curso foi realizada com sucesso.")
-//                } else {
-//                    println("Esperado elemento Aluno")
-//                }
-//            } else {
-//                println("Nao foi possivel matricular o aluno $aluno.\n" +
-//                        "Capacidade maxima de ${curso.qtMaxAlunos} atingida no curso $curso.")
-//            }
-//        }
+
+        if (curso != null) {
+            if (curso.listAlunosMatriculados.size < curso.qtMaxAlunos) {
+                curso.adicionarUmAluno(aluno)
+                var matricula = Matricula(aluno, curso)
+                listaMatricula.add(matricula)
+                println("A matricula do aluno ${matricula.alunoM} no curso ${matricula.cursoM} foi realizada com sucesso em ${matricula.dataM}.")
+            } else {
+                println("Não foi possivel adicionar $aluno pois a capacidade máxima de ${curso.qtMaxAlunos} alunos foi atingida no curso de ${curso.nome}.")
+            }
+        }
 
     }
 
@@ -129,14 +130,16 @@ class DigitalHouseManager(
 
 
         if (professorTitular != null) {
-            curso?.listaProfessorCurso?.add(professorTitular)
+            curso?.listaProfessorAlocados?.add(professorTitular)
             if (professorAdjunto != null) {
-                curso?.listaProfessorCurso?.add(professorAdjunto)
+                curso?.listaProfessorAlocados?.add(professorAdjunto)
             }
         }
         println("Professores abaixo alocados ao curso de $curso:")
-        curso?.listaProfessorCurso?.forEach {
-            println(it)
+                curso?.listaProfessorAlocados?.forEach { professores ->
+                println(professores)
+
+
         }
 
     }
