@@ -46,17 +46,6 @@ fun main(){
     digitalHouseManager.alocarProfessor(20001, 1111,4444)
     digitalHouseManager.alocarProfessor(20002, 3333, 2222)
 
-    digitalHouseManager.excluirAluno(6666)
-    println("----------------------------------------------------------------------------------")
-
-    digitalHouseManager.listaCurso.forEach {
-        println(it)
-            it.listAlunosMatriculados.forEach { aluno ->
-                println(aluno)
-            }
-
-    }
-
 
 
 }

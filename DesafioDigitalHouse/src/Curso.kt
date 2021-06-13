@@ -1,10 +1,10 @@
 open class Curso(
-    var nome: String, /* Investigar: Essa variavel esta sendo apenas utilizada pelo ToString*/
+    var nome: String,
     var codigo: Int,
     var qtMaxAlunos: Int
 ) {
     var listAlunosMatriculados = mutableListOf<Aluno>()
-    var listaProfessorAlocados = mutableListOf<Professor>() /*TENTATIVA*/
+    var listaProfessorAlocados = mutableListOf<Professor>()
 
     override fun equals(other: Any?): Boolean {
         val outroCurso = other as? Curso
@@ -26,7 +26,6 @@ open class Curso(
         if (listAlunosMatriculados.size < qtMaxAlunos) {
             if (aluno != null) {
                 listAlunosMatriculados.add(aluno)
-//                println("A matricula do aluno $aluno no curso $nome foi realizada com sucesso.")
             } else {
                 println("Esperado elemento Aluno")
             }

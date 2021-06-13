@@ -3,11 +3,8 @@ class DigitalHouseManager(
     var listaProfessor: MutableList<Professor>, /* Talvez seja necessario separar essa lista em Lista de Adjunto e Lista de Titular*/
     var listaCurso: MutableList<Curso>,
     var listaMatricula: MutableList<Matricula>,
-    nome: String,
-    codigo: Int,
-    qtMaxAlunos: Int
 
-): Curso(nome, codigo, qtMaxAlunos) {
+) {
 
 
     fun registrarCurso(

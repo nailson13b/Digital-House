@@ -11,7 +11,7 @@ class ProfessorAdjunto(
     """.trimIndent()
 
     override fun equals(other: Any?): Boolean {
-        val outroProfessor = other as? ProfessorAdjunto //talvez precise deixar apenas a Professor ao inves de ProfessorAdjunto
+        val outroProfessor = other as? ProfessorAdjunto
         return when(other) {
             is Professor -> {
                 this.codigo == outroProfessor?.codigo
