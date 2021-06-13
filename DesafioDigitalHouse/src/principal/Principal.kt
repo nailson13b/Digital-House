@@ -15,11 +15,11 @@ fun main(){
 //    matricula.criarMatricular(maria, android)
 
 
-    var listaAlunos = mutableListOf<Aluno>()
-    var listaProfessor = mutableListOf<Professor>()
-    var listaCurso = mutableListOf<Curso>()
-    var listaMatricula = mutableListOf<Matricula>()
-    var digitalHouseManager = DigitalHouseManager(listaAlunos,listaProfessor, listaCurso, listaMatricula)
+    val listaAlunos = mutableListOf<Aluno>()
+    val listaProfessor = mutableListOf<Professor>()
+    val listaCurso = mutableListOf<Curso>()
+    val listaMatricula = mutableListOf<Matricula>()
+    val digitalHouseManager = DigitalHouseManager(listaAlunos,listaProfessor, listaCurso, listaMatricula)
 
 
 
