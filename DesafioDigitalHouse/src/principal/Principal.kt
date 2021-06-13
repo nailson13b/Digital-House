@@ -1,4 +1,4 @@
-package teste
+package principal
 
 import Aluno
 import Curso
