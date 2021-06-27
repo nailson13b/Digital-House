@@ -13,7 +13,8 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val nome = intent.getStringExtra(MainActivity.KEY_INTENT_NOME)
         val saldo = intent.getDoubleExtra(KEY_INTENT_SALDO, 0.0)
