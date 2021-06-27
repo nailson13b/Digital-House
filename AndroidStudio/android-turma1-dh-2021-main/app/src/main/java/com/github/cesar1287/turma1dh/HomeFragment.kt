@@ -34,6 +34,10 @@ class HomeFragment : Fragment() {
                 bundle
             )
         }
+
+        binding?.btSplashMovies?.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_nav_graph_movies)
+        }
     }
 
     override fun onDestroyView() {

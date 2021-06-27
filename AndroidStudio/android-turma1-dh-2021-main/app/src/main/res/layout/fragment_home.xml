@@ -17,4 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <Button
+        android:id="@+id/btSplashMovies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/movies"
+        app:layout_constraintTop_toBottomOf="@+id/btSplashAbout"
+        app:layout_constraintStart_toStartOf="@id/btSplashAbout"
+        app:layout_constraintEnd_toEndOf="@id/btSplashAbout"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
