@@ -24,6 +24,24 @@ class SplashActivity : AppCompatActivity() {
                 "e meu saldo é $saldo, meu saldo em long é $saldoLong")
 
         Log.i("lifecycle - splash", "onCreate")
+
+//        val bundle = Bundle()
+//        bundle.putString("testeString", "xpto")
+//        bundle.putDouble("testeDouble", 1.0)
+//        bundle.putFloat("testeFloat", 1.0f)
+//
+//        val bundle1 = Bundle().apply {
+//            bundle.putString("testeString", "xpto")
+//            bundle.putDouble("testeDouble", 1.0)
+//            bundle.putFloat("testeFloat", 1.0f)
+//        } .also {
+//            Log.i("xpto", "Bundle instanciado com sucesso")
+//        }
+//
+//        with(bundle1) {
+//            getString()
+//            getDouble()
+//        }
     }
 
     override fun onResume() {
