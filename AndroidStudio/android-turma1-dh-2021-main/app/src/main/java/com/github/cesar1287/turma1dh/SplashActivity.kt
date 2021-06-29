@@ -3,6 +3,8 @@ package com.github.cesar1287.turma1dh
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.github.cesar1287.turma1dh.MainActivity.Companion.KEY_INTENT_SALDO
 import com.github.cesar1287.turma1dh.MainActivity.Companion.KEY_INTENT_SALDO_LONG
 import com.github.cesar1287.turma1dh.databinding.ActivitySplashBinding
@@ -24,6 +26,9 @@ class SplashActivity : AppCompatActivity() {
                 "e meu saldo é $saldo, meu saldo em long é $saldoLong")
 
         Log.i("lifecycle - splash", "onCreate")
+
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        setupWithNavController(binding.bottomNavigation, navController)
 
 //        val bundle = Bundle()
 //        bundle.putString("testeString", "xpto")
