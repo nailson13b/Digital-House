@@ -6,7 +6,7 @@
         android:title="@string/menu_home"/>
 
     <item
-        android:id="@+id/nav_graph_movies"
+        android:id="@+id/paymentFragment"
         android:enabled="true"
         android:title="@string/menu_movies"/>
 
